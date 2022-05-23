@@ -8,12 +8,12 @@ import (
 )
 
 func GetRouter(routerEngine *gin.Engine) {
-	routerEngine.GET("/user", controllers.FindUsers)
+	// routerEngine.GET("/user", controllers.FindUsers)
 	routerEngine.POST("/user", controllers.CreateUser)
 	routerEngine.POST("/login", controllers.UserLogin)
 	secured := routerEngine.Group("").Use(middlewares.JwtAuthMiddleware())
 		{
-			secured.GET("/ping", controllers.GetDataUserLogin)
+			secured.GET("/user-now", controllers.GetDataUserLogin)
 		}
 	
 }
